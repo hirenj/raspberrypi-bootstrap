@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+#To be installed into
+#/usr/local/bin/check_conf
+
+conf_file=/boot/wlan.conf
+
+rm /etc/netctl/wlan
+
+if [ -f "$conf_file" ]; then
+  cp /etc/netctl/wlan.template /etc/netctl/wlan
+  ssid=$(head -1 $conf_file | tr -d '\n')
+  pass=$(tail -n+2 $conf_file | tr -d '\n')
+  echo "ESSID='$ssid'" >> /etc/netctl/wlan
+  echo "Key='$pass'" >> /etc/netctl/wlan
+  netctl enable wlan
+fi

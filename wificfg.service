@@ -1,0 +1,14 @@
+# To be installed into /etc/systemd/system/wificfg.service
+# Make sure the service is installed using
+# systemctl enable wificfg.service
+
+[Unit]
+Description=Wifi Config copying
+After=local-fs.target
+
+[Service]
+ExecStart=/usr/local/bin/check_conf
+Type=oneshot
+
+[Install]
+WantedBy=network.target
