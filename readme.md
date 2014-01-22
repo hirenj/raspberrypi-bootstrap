@@ -26,3 +26,9 @@ Follow the instructions for getting Docker up and running
 
    curl https://raw.github.com/resin-io/docker-install-script/master/install.sh | sh
 
+Install our bits and pieces
+
+Enable ntp
+
+   systemctl enable ntpd
+   systemctl start ntpd
