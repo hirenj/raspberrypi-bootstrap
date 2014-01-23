@@ -10,7 +10,7 @@ Minimal installation / bootstrap of the Raspberry Pi
    echo 'wlan-key' >> /Volumes/SDCARD/wlan.conf
 
 
-### To build a brand new image ###
+### To build a brand new image from Arch ###
 
 Start off with loading up a disk image of Arch
 
@@ -32,3 +32,12 @@ Enable ntp
 
    systemctl enable ntpd
    systemctl start ntpd
+
+
+## To build a brand new image from a minimal image ##
+
+    http://www.linuxsystems.it/raspbian-wheezy-armhf-raspberry-pi-minimal-image
+
+    apt-get update
+    apt-get install -y vim wpasupplicant
+    update-rc.d wlanconf-copy defaults

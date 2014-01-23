@@ -1,0 +1,45 @@
+#! /bin/sh
+# /etc/init.d/wlanconfcopy 
+
+### BEGIN INIT INFO
+# Provides:          wlanconfcopy
+# Required-Start:    $syslog
+# Required-Stop:     $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Copy wireless lan config from a boot partition 
+### END INIT INFO
+
+# If you want a command to always run, put it here
+# Copy this file to /etc/init.d/wlanconfcopy
+ 
+
+if [ -e /boot/wlan.conf ]; then
+    echo '' > /etc/network/interfaces.d/wlan
+    ssid=$(head -1 /boot/wlan.conf | tr -d '\n')
+    pass=$(tail -n+2 /boot/wlan.conf | tr -d '\n')
+    echo "allow-hotplug wlan0" >> /etc/network/interfaces.d/wlan
+    echo "iface wlan0 inet dhcp" >> /etc/network/interfaces.d/wlan
+    echo "wpa-ssid $ssid" >> /etc/network/interfaces.d/wlan
+    echo "wpa-psk $pass" >> /etc/network/interfaces.d/wlan
+fi
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    echo "Starting wlanconf"
+    # run application you want to start
+    ;;
+  stop)
+    echo "Stopping wlanconf"
+    # kill application you want to stop
+    # killall noip2
+    ;;
+  *)
+    echo "Usage: /etc/init.d/wlanconfcopy {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
