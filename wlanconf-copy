@@ -20,6 +20,7 @@ if [ -e /boot/wlan.conf ]; then
     pass=$(tail -n+2 /boot/wlan.conf | tr -d '\n')
     echo "allow-hotplug wlan0" >> /etc/network/interfaces.d/wlan
     echo "iface wlan0 inet dhcp" >> /etc/network/interfaces.d/wlan
+    echo "    dns-servers 8.8.8.8 8.8.4.4" >> /etc/network/interfaces.d/wlan
     echo "wpa-ssid $ssid" >> /etc/network/interfaces.d/wlan
     echo "wpa-psk $pass" >> /etc/network/interfaces.d/wlan
 fi
