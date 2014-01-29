@@ -39,6 +39,7 @@ Enable ntp
 
     apt-get update
     apt-get install -y curl vim wpasupplicant resolvconf
+    echo "source /etc/network/interfaces.d/wlan" >> /etc/network/interfaces
     update-rc.d wlanconf-copy defaults
 
 
@@ -56,15 +57,15 @@ Enable ntp
 
 ## To install Chromium
 
-   apt-get install -y xserver-xorg xinit xserver-xorg-video-fbdev matchbox chromium x11-xserver-utils ttf-mscorefonts-installer xwit sqlite3 libnss3 
+    apt-get install -y xserver-xorg xinit xserver-xorg-video-fbdev matchbox chromium x11-xserver-utils ttf-mscorefonts-installer xwit sqlite3 libnss3 
 
 ## To resize partition
 
-   fdisk /dev/mmcblk0
-   Delete partitions 2 + 3
-   d, 3 #Get rid of swap
-   d, 2 #Get rid of main
-   n p 2 #Create new partition at same start as old (10448)
-   w    #Write partition table
-   Reboot
-   resize2fs /dev/mmcblk0p2
+    fdisk /dev/mmcblk0
+    Delete partitions 2 + 3
+    d, 3 #Get rid of swap
+    d, 2 #Get rid of main
+    n p 2 #Create new partition at same start as old (10448)
+    w    #Write partition table
+    Reboot
+    resize2fs /dev/mmcblk0p2
