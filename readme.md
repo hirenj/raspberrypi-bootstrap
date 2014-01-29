@@ -38,7 +38,7 @@ Enable ntp
     http://www.linuxsystems.it/raspbian-wheezy-armhf-raspberry-pi-minimal-image
 
     apt-get update
-    apt-get install -y curl vim wpasupplicant resolvconf
+    apt-get install -y curl vim wpasupplicant resolvconf ntpdate
     echo "source /etc/network/interfaces.d/wlan" >> /etc/network/interfaces
     update-rc.d wlanconf-copy defaults
 
@@ -49,8 +49,7 @@ Enable ntp
     apt-get install -y g++ make
     curl -O -L https://gist.github.com/raw/3245130/v0.10.24/node-v0.10.24-linux-arm-armv6j-vfp-hard.tar.gz
     mkdir /usr/local/node && cd /usr/local/node && tar zxvf ~/node-v0.10.24-linux-arm-armv6j-vfp-hard.tar.gz --strip=1 && export PATH=$PATH:/usr/local/node/bin
-    apt-get install ttf-dejavu 
-    apt-get install daemon fbset 
+    apt-get install -y ttf-dejavu daemon fbset git
     # In the directory where we want the module 
     npm install openvg-canvas --save
 
